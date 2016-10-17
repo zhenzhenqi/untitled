@@ -5,7 +5,8 @@
 	<title>UNTITLED gallery</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<link href="css/custom.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r79/three.js"></script>
 	<script src="scripts/PointerLockControls.js"></script>
 	<script src="scripts/OBJLoader.js"></script>
@@ -16,15 +17,15 @@
 
 	<div id="blocker">
 		<div id="instructions">
-			<span style="font-size:60px">Welcome to UNTITLED Gallery</span>
-			<br />
-			<br />
-			<br />
-			<form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
-				<input type="file" name="userPhoto" />
-				<input type="submit" value="Upload Image" name="submit">
-			</form>
+			<h1>Welcome to UNTITLED Gallery</h1>
+            <h4>An online space that's open to anyone who wants to exhibit artwork</h4>
 		</div>
+        <div class="row">
+            <form id="uploadForm" enctype="multipart/form-data" action="/api/photo" method="post">
+                <input type="file" name="userPhoto">
+                <button type="submit" value="Upload Image" name="submit" class="btn btn-primary">SUBMIT</button>
+			</form>  
+        </div>
 
 	</div>
 
