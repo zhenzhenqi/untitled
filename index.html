@@ -333,9 +333,9 @@
 				scene.add(mesh);
 			}
 
-			//import paintings custom
+			//import paintings back
 			for (var i = 0; i < 2; i++) {
-				var texture = new THREE.TextureLoader().load('textures/placeholder.jpg');
+				var texture = new THREE.TextureLoader().load('/textures/13.jpg');
 				var geometry = new THREE.BoxBufferGeometry(20, 1, 20);
 				var material = new THREE.MeshBasicMaterial({
 					map: texture
@@ -345,7 +345,20 @@
 				mesh.position.set(10 + i * 35, 20, -120);
 				scene.add(mesh);
 			}
-
+            
+            //import paintings custom
+            for (var i = 0; i < 2; i++) {
+				var texture = new THREE.TextureLoader().load('/uploads/userPhoto.png');
+				var geometry = new THREE.BoxBufferGeometry(20, 1, 20);
+				var material = new THREE.MeshBasicMaterial({
+					map: texture
+				});
+				mesh = new THREE.Mesh(geometry, material);
+				mesh.rotation.x = Math.PI / 2;
+				mesh.position.set(10 + i * 35, 20, -120);
+				scene.add(mesh);
+			}
+            
 
 			//
 			renderer = new THREE.WebGLRenderer();
