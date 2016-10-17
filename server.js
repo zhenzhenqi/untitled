@@ -26,9 +26,9 @@ app.post('/api/photo', function(req,res){
     upload(req,res,function(err) {
         if(err) {
             console.log(err);
-            return res.end("Error uploading file. <button href='/'>Back</button>");
+            res.sendFile(__dirname + '/error.html');
         }
-        res.end("File is uploaded <button href='/'>Back</button>");
+        res.sendFile(__dirname + '/success.html');
     });
 });
 
