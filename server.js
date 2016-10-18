@@ -1,38 +1,38 @@
-var express =   require("express");
-var multer  =   require('multer');
+const express = require('express');
+const aws = require('aws-sdk');
+const app = express();
+var s3 = new AWS.S3();
 
 
-var storage = multer.diskStorage({
-  destination: function (req, file, callback) {
-    callback(null, './public/uploads');
-  },
-  filename: function (req, file, callback) {
-      callback(null, 'userPhoto.png');
-  }
+var s3Bucket = new AWS.S3( { params: {Bucket: process.env.S3_BUCKET} } )
+
+
+
+app.set('views', './views');
+app.use(express.static('./public'));
+app.engine('html', require('ejs').renderFile);
+app.listen(process.env.PORT || 3000);
+
+
+var data = {
+    Key: imageName,
+    Body: imageFile
+};
+
+s3Bucket.putObject(data, function (err, data) {
+    if (err) {
+        console.log('Error uploading data: ', data);
+    } else {
+        console.log('succesfully uploaded the image!');
+    }
 });
 
-var upload = multer({ storage : storage}).single('userPhoto');
 
+var urlParams = {
+    Bucket: s3Bucket,
+    Key: 'imageName'
+};
 
-var app         =   express();
-app.use(express.static('public'));
-
-
-app.get('/',function(req,res){
-      res.sendFile(__dirname + "/index.html");
-});
-
-app.post('/api/photo', function(req,res){
-    upload(req,res,function(err) {
-        if(err) {
-            console.log(err);
-            res.sendFile(__dirname + '/error.html');
-        }
-        res.sendFile(__dirname + '/success.html');
-    });
-});
-
-app.listen(process.env.PORT || 3000,function(){
-    console.log("Working on port 3000");
-    console.log("this is an awesome project...");
-});
+s3Bucket.getSignedUrl('getObject', urlParams, function (err, url) {
+    console.log('the url of the image is', url);
+})
