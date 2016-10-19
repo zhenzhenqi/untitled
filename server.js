@@ -1,13 +1,14 @@
 var express =   require("express");
 var multer  =   require('multer');
 
+var counter = 0;
 
 var storage = multer.diskStorage({
   destination: function (req, file, callback) {
     callback(null, './public/uploads');
   },
   filename: function (req, file, callback) {
-      callback(null, 'userPhoto.png');
+      callback(null, 'userPhoto' + counter + ".png");
   }
 });
 
@@ -23,6 +24,10 @@ app.get('/',function(req,res){
 });
 
 app.post('/api/photo', function(req,res){
+
+    counter++;
+    if(counter>25)counter=0;
+    
     upload(req,res,function(err) {
         if(err) {
             console.log(err);
@@ -32,7 +37,7 @@ app.post('/api/photo', function(req,res){
     });
 });
 
-app.listen(3000,function(){
-    console.log("Working on port 3000");
+app.listen(4444,function(){
+    console.log("Working on port 4444");
     console.log("this is an awesome project...");
 }); 
