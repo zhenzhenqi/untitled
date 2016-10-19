@@ -304,11 +304,12 @@
 			}, onProgress, onError);
 
 
-
+			var paintingCounter = 1;
 
 			//import paintings left
 			for (var i = 0; i < 8; i++) {
-				var texture = new THREE.TextureLoader().load('textures/' + i + '.jpg');
+				var texture = new THREE.TextureLoader().load('uploads/' + 'userPhoto' + paintingCounter + '.png');
+				paintingCounter++;
 				var geometry = new THREE.BoxBufferGeometry(15, 15, 1);
 				var material = new THREE.MeshBasicMaterial({
 					map: texture
@@ -321,8 +322,9 @@
 
 			//import paintings right
 			for (var i = 0; i < 8; i++) {
-				var index = i + 8;
-				var texture = new THREE.TextureLoader().load('textures/' + index + '.jpg');
+			
+				var texture = new THREE.TextureLoader().load('uploads/' + 'userPhoto' + paintingCounter + '.png');
+				paintingCounter++;
 				var geometry = new THREE.BoxBufferGeometry(15, 15, 1);
 				var material = new THREE.MeshBasicMaterial({
 					map: texture
@@ -335,8 +337,9 @@
 
 			//import paintings back
             for (var i = 0; i < 4; i++) {
-                var index = i + 16;
-				var texture = new THREE.TextureLoader().load('textures/' + index + '.jpg');
+               
+				var texture = new THREE.TextureLoader().load('uploads/' + 'userPhoto' + paintingCounter + '.png');
+				paintingCounter++;
 				var geometry = new THREE.BoxBufferGeometry(15, 1, 15);
 				var material = new THREE.MeshBasicMaterial({
 					map: texture
@@ -350,7 +353,8 @@
             //import paintings front
             for (var i = 0; i < 4; i++) {
                 var index = i + 20;
-				var texture = new THREE.TextureLoader().load('textures/' + index + '.jpg');
+				var texture = new THREE.TextureLoader().load('uploads/' + 'userPhoto' + paintingCounter + '.png');
+				paintingCounter++;
 				var geometry = new THREE.BoxBufferGeometry(15, 1, 15);
 				var material = new THREE.MeshBasicMaterial({
 					map: texture
@@ -362,7 +366,8 @@
 				scene.add(mesh);
             }
 
-               
+         
+
 			//
 			renderer = new THREE.WebGLRenderer();
 			renderer.setClearColor(0xffffff);
