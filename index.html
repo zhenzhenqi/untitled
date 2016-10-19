@@ -172,7 +172,7 @@
 			camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 1, 1000);
 
 			scene = new THREE.Scene();
-			scene.fog = new THREE.Fog("rgb(50,50,50)", 0, 300);
+			scene.fog = new THREE.Fog("rgb(250,250,250)", 0, 300);
 
 			var plight = new THREE.PointLight("rgb(200,200,200)");
 			plight.position.set(0, 40, 0);
@@ -262,7 +262,7 @@
 
 
 			material = new THREE.MeshLambertMaterial();
-			var floorColor = new THREE.Color("rgb(250, 250, 250)");
+			var floorColor = new THREE.Color("rgb(100, 100, 100)");
 			material.color = floorColor;
 
 			mesh = new THREE.Mesh(geometry, material);
@@ -290,7 +290,7 @@
 				var modelMat = new THREE.MeshBasicMaterial();
 				modelMat.roughness = 1;
 				modelMat.metalness = 1;
-				var modelColor = new THREE.Color("rgb(250, 250, 250)");
+				var modelColor = new THREE.Color("rgb(100, 100, 100)");
 				modelMat.color = modelColor;
 
 				object.traverse(function(child) {
@@ -339,7 +339,6 @@
 
 			//import paintings back
             for (var i = 0; i < 4; i++) {
-               
 				var texture = new THREE.TextureLoader().load('uploads/' + 'userPhoto' + paintingCounter + '.png');
 				paintingCounter++;
 				var geometry = new THREE.BoxBufferGeometry(15, 1, 15);
@@ -354,7 +353,6 @@
             
             //import paintings front
             for (var i = 0; i < 4; i++) {
-                var index = i + 20;
 				var texture = new THREE.TextureLoader().load('uploads/' + 'userPhoto' + paintingCounter + '.png');
 				paintingCounter++;
 				var geometry = new THREE.BoxBufferGeometry(15, 1, 15);
